@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersécurité</title>
+    <link href="../dist/output.css" rel="stylesheet">
+<style>
+    #hamburger-icon path {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform-origin: center;
+    }
+
+    #menu-toggle.active #line1 {
+        transform: translateY(4px) rotate(45deg);
+    }
+
+    #menu-toggle.active #line2 {
+        opacity: 0;
+    }
+
+    #menu-toggle.active #line3 {
+        transform: translateY(-4px) rotate(-45deg);
+    }
+
+    #hamburger-icon svg {
+        transition: transform 0.3s ease;
+    }
+
+    #hamburger-icon {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-white">
+    <header class="bg-white text-gray-900 border-b-2 border-sky-600 shadow-md fixed top-0 inset-x-0 z-50 ">
+        <div class="container mx-auto flex items-center justify-between p-4 px-8 ">
+            <!-- Logo + Nom -->
+            <a href="../pages/index.html" class="flex items-center space-x-2">
+                <img src="../source/logo.png" alt="CyberProtect Logo" class="w-10 h-10">
+                <span class="text-2xl font-bold tracking-wide">CyberProtect</span>
+            </a>
+    
+            <!-- Navigation (Desktop) -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="/pages/index.html" class="hover:text-blue-600  font-medium transition">Accueil</a>
+                <a href="/pages/cybersecurite.html" class="hover:text-blue-600 font-medium transition">Cybersécurité</a>
+                <a href="/pages/galerie.html" class="hover:text-blue-600 font-medium transition">Galerie</a>
+                <a href="/pages/contact.html" class="hover:text-blue-600 font-medium transition">Contact</a>
+                <a href="/pages/faq.html" class="hover:text-blue-600 font-medium transition">FAQ</a>
+            </nav>
+    
+            <!-- Bouton Mobile -->
+            <button id="menu-toggle" class="md:hidden focus:outline-none">
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    class="w-10 h-10 text-gray-900 transition-transform duration-300">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    
+    
+        <!-- Navigation Mobile -->
+        <nav id="mobile-menu"
+            class="hidden md:hidden flex-col bg-white border-b-2 border-t-2 border-t-gray-200 border-sky-600 text-gray-900 p-6 space-y-4 absolute inset-x-0 top-[4.5rem] shadow-lg rounded-b-lg transition-transform transform -translate-y-10 opacity-0">
+            <a href="/pages/index.html" class="block py-2 px-4 font-medium hover:text-blue-600 transition">Accueil</a>
+            <a href="../pages/cybersecurite.html"
+                class="block py-2 px-4 font-medium hover:text-blue-600 transition">Cybersécurité</a>
+            <a href="/pages/galerie.html" class="block py-2 px-4 font-medium hover:text-blue-600 transition">Galerie</a>
+            <a href="/pages/contact.html" class="block py-2 px-4 font-medium hover:text-blue-600 transition">Contact</a>
+            <a href="/pages/faq.html" class="block py-2 px-4  font-medium hover:text-blue-600 transition">FAQ</a>
+        </nav>
+    </header>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+
+            // Animation du menu déroulant
+            mobileMenu.classList.toggle('translate-y-0');
+            mobileMenu.classList.toggle('opacity-100');
+
+            // Rotation de l'icône menu
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M4 6h16M4 12h16m-7 6h7" />`;
+            } else {
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M6 18L18 6M6 6l12 12" />`;
+            }
+        });
+    </script>
+
+    
+    
+    <body class="bg-gray-100">
+        <div class="bg-blue-600 text-white p-4 text-center mt-28">
+            <h1 class="text-3xl font-bold">Mini-jeux sur la Cybersécurité</h1>
+            <p class="mt-2">Amusez-vous tout en apprenant les bases de la cybersécurité !</p>
+        </div>
+    
+        
+        <h1 class="text-center text-3xl font-semibold mt-8 px-4 text-gray-800 ">Votre mot de passe est-il sécurisé ? Mettez-le à l'épreuve !</h1>
+        <p class="text-center text-lg font-normal text-gray-600 mt-6 px-4">Votre mot de passe est la première ligne de défense
+                    contre les cyberattaques ! Assurez-vous qu'il est solide et sécurisé en le testant dès maintenant.
+        </p>    
+        <div class=" justify-center mx-4 bg-white rounded-lg p-8  ">
+                    <label for="password" class="block text-gray-700 font-semibold text-xl mb-4">Testez votre mot de passe :</label>
+                    <div class="relative">
+                        <input type="password" id="password"
+                            class="w-full p-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-blue-400"
+                            oninput="checkPassword()" placeholder="Entrez votre mot de passe...">
+                        <div class="absolute top-1/2 right-4 transform -translate-y-1/2">
+                            <button onclick="toggleVisibility()" class="text-gray-500 focus:outline-none"><svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg></button>
+                        </div>
+                    </div>
+            
+                    <div class="w-full h-2 bg-gray-200 rounded-full mt-4">
+                        <div id="progress-bar" class="h-2 bg-red-500 rounded-full transition-all duration-500" style="width: 0%;">
+                        </div>
+                    </div>
+            
+                    <div id="feedback" class="mt-8 p-6 border border-blue-400 rounded-lg bg-blue-50 hidden">
+                        <h2 class="text-2xl font-semibold text-blue-600 flex items-center gap-2">
+                            ✅ Bon mot de passe!
+                        </h2>
+                        <ul class="list-disc pl-5 text-gray-700 mt-2">
+                            <li>Votre mot de passe est résistant au piratage.</li>
+                            <li>Votre mot de passe n'apparaît dans aucune base de données ayant fait l'objet d'une fuite.</li>
+                        </ul>
+                    </div>
+            
+                    <div class="mt-8 text-center text-gray-700">
+                        <p class="text-lg">Votre mot de passe peut être craqué avec un ordinateur de bureau standard en environ...
+                        </p>
+                        <p id="crack-time" class="mt-2 text-4xl font-bold text-blue-600">-</p>
+                        <p class="text-gray-500 mt-2 text-lg" id="fact">-</p>
+                    </div>
+        </div>
+            
+                <script>
+                    function checkPassword() {
+                        const password = document.getElementById('password').value;
+                        const progressBar = document.getElementById('progress-bar');
+                        const feedback = document.getElementById('feedback');
+                        const crackTime = document.getElementById('crack-time');
+                        const fact = document.getElementById('fact');
+
+                        let strength = 0;
+                        if (password.length >= 8) strength += 1;
+                        if (/[A-Z]/.test(password)) strength += 1;
+                        if (/[a-z]/.test(password)) strength += 1;
+                        if (/[0-9]/.test(password)) strength += 1;
+                        if (/[^a-zA-Z0-9]/.test(password)) strength += 1;
+
+                        const levels = [
+                            { percent: "10%", color: "bg-red-500", time: "Quelques secondes", fact: "C'est le temps qu'il faut pour faire un clin d'œil." },
+                            { percent: "30%", color: "bg-orange-400", time: "Quelques heures", fact: "C'est le temps qu'il vous faut pour regarder un film." },
+                            { percent: "50%", color: "bg-yellow-400", time: "28 jours", fact: "C'est le temps qu'il vous faut pour parcourir 65 970 kilomètres en voiture." },
+                            { percent: "75%", color: "bg-blue-500", time: "5 ans", fact: "C'est le temps qu'il faut pour terminer des études universitaires." },
+                            { percent: "100%", color: "bg-green-500", time: "33 siècles", fact: "C'est le temps qu'il faut pour que la Tour Eiffel rouille complètement." }
+                        ];
+
+                        const level = levels[strength];
+
+                        progressBar.style.width = level.percent;
+                        progressBar.className = `h-2 rounded-full transition-all duration-500 ${level.color}`;
+
+                        if (strength >= 3) {
+                            feedback.classList.remove('hidden');
+                        } else {
+                            feedback.classList.add('hidden');
+                        }
+
+                        crackTime.textContent = level.time;
+                        fact.textContent = level.fact;
+                    }
+
+                    function toggleVisibility() {
+                        const passwordInput = document.getElementById('password');
+                        if (passwordInput.type === "password") {
+                            passwordInput.type = "text";
+                        } else {
+                            passwordInput.type = "password";
+                        }
+                    }
+                </script>
+
+                <style>
+                    
+                
+                    .card {
+                        perspective: 1000px;
+                    }
+                
+                    .card-inner {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        transition: transform 0.6s, border-color 0.3s;
+                        transform-style: preserve-3d;
+                        border: 2px solid transparent;
+                        /* Bord par défaut */
+                        border-radius: 0.5rem;
+                        border-color: #2196F3;
+                    }
+                
+                    .card-front,
+                    .card-back {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        backface-visibility: hidden;
+                        border-radius: 0.5rem;
+                    }
+                
+                    .card-front {
+                        background: #fff;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 1.5rem;
+                        color: #000;
+                        font-weight: bold;
+                    }
+                
+                    .card-back {
+                        background: #ffffff;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        padding: 1rem;
+                        font-size: 1rem;
+                        transform: rotateY(180deg);
+                    }
+                
+                    .matched {
+                        border-color: #4CAF50 !important;
+                        /* Bord vert pour une paire correcte */
+                    }
+                
+                    .not-matched {
+                        border-color: #F44336 !important;
+                        /* Bord rouge pour une paire incorrecte */
+                    }
+                </style>
+                </head>
+                
+                <body class="bg-gray-100 p-8 mb-24">
+                    <div class="max-w-4xl mx-auto">
+                        <h1 class="text-3xl font-bold mb-4 text-center">Jeu de Paires sur la Cybersécurité</h1>
+                        <p class="text-lg text-center mb-8">Retrouvez les paires en associant les termes de cybersécurité à leurs
+                            définitions !</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" id="cardContainer">
+                            <!-- Les cartes seront générées ici -->
+                        </div>
+                        <div class="text-center mt-2">
+                            <button id="resetButton"
+                                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 hidden">Recommencer</button>
+                        </div>
+                    </div>
+                
+                    <script>
+                        const cardData = [
+                            { term: 'Authentification à deux facteurs (A2F)', definition: 'Méthode de sécurité nécessitant deux formes d\'identification.' },
+                            { term: 'Phishing', definition: 'Tentative d\'escroquerie pour obtenir des informations sensibles.' },
+                            { term: 'Malware', definition: 'Logiciel malveillant conçu pour endommager un ordinateur.' },
+                            { term: 'Ransomware', definition: 'Malware bloquant l\'accès à des données jusqu\'à paiement d\'une rançon.' },
+                            { term: 'Pare-feu', definition: 'Système de sécurité surveillant et contrôlant le trafic réseau.' },
+                            { term: 'VPN', definition: 'Réseau privé virtuel sécurisant votre connexion Internet.' }
+                        ];
+
+                        const cards = [];
+                        cardData.forEach(card => {
+                            cards.push({ type: 'term', content: card.term });
+                            cards.push({ type: 'definition', content: card.definition });
+                        });
+                        cards.sort(() => Math.random() - 0.5);
+
+                        const cardContainer = document.getElementById('cardContainer');
+                        let firstCard, secondCard;
+                        let hasFlippedCard = false;
+                        let lockBoard = false;
+                        let matchedPairs = 0;
+
+                        cards.forEach((card, index) => {
+                            const cardElement = document.createElement('div');
+                            cardElement.className = 'card w-full h-40';
+                            cardElement.dataset.cardIndex = index;
+
+                            cardElement.innerHTML = `
+                                <div class="card-inner">
+                                    <div class="card-front text-center ">Jeu de Cybersécurité</div>
+                                    <div class="card-back bg-white">${card.content}</div>
+                                </div>
+                            `;
+
+                            cardElement.addEventListener('click', flipCard);
+                            cardContainer.appendChild(cardElement);
+                        });
+
+                        function flipCard() {
+                            if (lockBoard) return;
+                            if (this === firstCard) return;
+
+                            this.querySelector('.card-inner').style.transform = 'rotateY(180deg)';
+
+                            if (!hasFlippedCard) {
+                                hasFlippedCard = true;
+                                firstCard = this;
+                                return;
+                            }
+
+                            secondCard = this;
+                            lockBoard = true;
+
+                            checkForMatch();
+                        }
+
+                        function checkForMatch() {
+                            const firstContent = firstCard.querySelector('.card-back').innerText;
+                            const secondContent = secondCard.querySelector('.card-back').innerText;
+
+                            const isMatch = cardData.some(card =>
+                                (card.term === firstContent && card.definition === secondContent) ||
+                                (card.definition === firstContent && card.term === secondContent)
+                            );
+
+                            if (isMatch) {
+                                markAsMatched();
+                            } else {
+                                markAsNotMatched();
+                            }
+                        }
+
+                        function markAsMatched() {
+                            firstCard.querySelector('.card-inner').classList.add('matched');
+                            secondCard.querySelector('.card-inner').classList.add('matched');
+                            matchedPairs++;
+
+                            setTimeout(() => {
+                                firstCard.removeEventListener('click', flipCard);
+                                secondCard.removeEventListener('click', flipCard);
+                                resetBoard();
+                            }, 1000);
+
+                            if (matchedPairs === cardData.length) {
+                                document.getElementById('resetButton').classList.remove('hidden');
+                            }
+                        }
+
+                        function markAsNotMatched() {
+                            firstCard.querySelector('.card-inner').classList.add('not-matched');
+                            secondCard.querySelector('.card-inner').classList.add('not-matched');
+
+                            setTimeout(() => {
+                                firstCard.querySelector('.card-inner').style.transform = 'rotateY(0deg)';
+                                secondCard.querySelector('.card-inner').style.transform = 'rotateY(0deg)';
+                                firstCard.querySelector('.card-inner').classList.remove('not-matched');
+                                secondCard.querySelector('.card-inner').classList.remove('not-matched');
+                                resetBoard();
+                            }, 1000);
+                        }
+
+                        function resetBoard() {
+                            [hasFlippedCard, lockBoard] = [false, false];
+                            [firstCard, secondCard] = [null, null];
+                        }
+
+                        document.getElementById('resetButton').addEventListener('click', () => {
+                            cardContainer.innerHTML = '';
+                            matchedPairs = 0;
+
+                            const newCards = [];
+                            cardData.forEach(card => {
+                                newCards.push({ type: 'term', content: card.term });
+                                newCards.push({ type: 'definition', content: card.definition });
+                            });
+                            newCards.sort(() => Math.random() - 0.5);
+
+                            newCards.forEach((card, index) => {
+                                const cardElement = document.createElement('div');
+                                cardElement.className = 'card w-full h-40';
+                                cardElement.dataset.cardIndex = index;
+
+                                cardElement.innerHTML = `
+                                    <div class="card-inner">
+                                        <div class="card-front text-center">Jeu de Cybersécurité</div>
+                                        <div class="card-back bg-white">${card.content}</div>
+                                    </div>
+                                `;
+
+                                cardElement.addEventListener('click', flipCard);
+                                cardContainer.appendChild(cardElement);
+                            });
+
+                            document.getElementById('resetButton').classList.add('hidden');
+                        });
+                    </script>
+
+
+
+
+
+    
+          
+
+
+
+
+    
+    
+
+    <footer class="bg-gray-900 text-white py-6 mt-5">
+        <div class="container mx-auto px-6 md:px-12">
+            <!-- Liens du menu -->
+            <nav class="flex flex-wrap justify-center gap-6 text-gray-300 text-base font-medium">
+                <a href="/pages/index.html" class="hover:text-blue-400 transition">Accueil</a>
+                <a href="/pages/cybersecurite.html" class="hover:text-blue-400 transition">Cybersécurité</a>
+                <a href="/pages/galerie.html" class="hover:text-blue-400 transition">Galerie</a>
+                <a href="/pages/contact.html" class="hover:text-blue-400 transition">Contact</a>
+                <a href="/pages/faq.html" class="hover:text-blue-400 transition">FAQ</a>
+            </nav>
+    
+            <!-- Ligne de séparation -->
+            <div class="border-t border-gray-700 my-5"></div>
+    
+            <!-- Mentions légales et Copyright -->
+            <div class="flex flex-col md:flex-row items-center justify-between text-gray-400 text-sm font-light">
+                <p>&copy; 2025 CyberProtect. Tous droits réservés.</p>
+                <nav class="flex gap-6 mt-2 md:mt-0">
+                    <a href="#" class="hover:text-blue-400 transition">Mentions légales</a>
+                    <a href="#" class="hover:text-blue-400 transition">Politique de confidentialité</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
+

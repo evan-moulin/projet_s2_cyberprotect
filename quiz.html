@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../dist/output.css" rel="stylesheet">
+    <title>CyberProtect - Testez vos conna</title>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+
+<body class="bg-white">
+    <header class="bg-white text-gray-900 border-b-2 border-sky-600 shadow-md fixed top-0 inset-x-0 z-50 ">
+        <div class="container mx-auto flex items-center justify-between p-4 px-8 ">
+            <!-- Logo + Nom -->
+            <a href="../pages/index.html" class="flex items-center space-x-2">
+                <img src="../source/logo.png" alt="CyberProtect Logo" class="w-10 h-10">
+                <span class="text-2xl font-bold tracking-wide">CyberProtect</span>
+            </a>
+    
+            <!-- Navigation (Desktop) -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="/pages/index.html" class="hover:text-blue-600  font-medium transition">Accueil</a>
+                <a href="/pages/cybersecurite.html" class="hover:text-blue-600 font-medium transition">Cybersécurité</a>
+                <a href="/pages/galerie.html" class="hover:text-blue-600 font-medium transition">Galerie</a>
+                <a href="/pages/contact.html" class="hover:text-blue-600 font-medium transition">Contact</a>
+                <a href="/pages/faq.html" class="hover:text-blue-600 font-medium transition">FAQ</a>
+            </nav>
+    
+            <!-- Bouton Mobile -->
+            <button id="menu-toggle" class="md:hidden focus:outline-none">
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    class="w-10 h-10 text-gray-900 transition-transform duration-300">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    
+    
+        <!-- Navigation Mobile -->
+        <nav id="mobile-menu"
+            class="hidden md:hidden flex-col bg-white border-b-2 border-t-2 border-t-gray-200 border-sky-600 text-gray-900 p-6 space-y-4 absolute inset-x-0 top-[4.5rem] shadow-lg rounded-b-lg transition-transform transform -translate-y-10 opacity-0">
+            <a href="/pages/index.html" class="block py-2 px-4 font-medium hover:text-blue-600 transition">Accueil</a>
+            <a href="../pages/cybersecurite.html"
+                class="block py-2 px-4 font-medium hover:text-blue-600 transition">Cybersécurité</a>
+            <a href="/pages/galerie.html" class="block py-2 px-4 font-medium hover:text-blue-600 transition">Galerie</a>
+            <a href="/pages/contact.html" class="block py-2 px-4 font-medium hover:text-blue-600 transition">Contact</a>
+            <a href="/pages/faq.html" class="block py-2 px-4  font-medium hover:text-blue-600 transition">FAQ</a>
+        </nav>
+    </header>
+
+    <!-- Section Texte et Quiz -->
+    <section class="rounded-lg p-10 mt-24 max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-center gap-16">
+        <!-- Texte Intro -->
+        <div class="flex-1 max-w-4xl">
+            <h2 class="text-4xl font-extrabold mb-6 text-gray-900 text-center lg:text-left">
+                Qu'est-ce que la Cybersécurité ?
+            </h2>
+            <div class="text-lg text-gray-800 leading-relaxed space-y-6">
+                <p>
+                    La cybersécurité est la pratique visant à protéger les systèmes, réseaux et programmes contre les
+                    attaques numériques. Ces cyberattaques ont généralement pour but d'accéder, de modifier ou de détruire
+                    des informations sensibles, d'extorquer de l'argent ou d'interrompre les processus métiers.
+                </p>
+                <p>
+                    Adopter de bonnes pratiques, comme l'utilisation de mots de passe forts, l'authentification à deux
+                    facteurs (2FA) et des mises à jour régulières, est essentiel pour rester protégé.
+                </p>
+                <p class="font-semibold text-gray-900">
+                    Grâce à ce quiz, évaluez vos connaissances sur les bonnes pratiques de la cybersécurité et découvrez
+                    comment améliorer votre sécurité en ligne.
+                </p>
+            </div>
+        </div>
+    
+        <!-- Quiz -->
+        <div id="game-container" class="bg-gray-800 rounded-xl  shadow-lg p-8 text-gray-100 flex-1 max-w-lg w-full">
+            <h1 class="text-3xl font-extrabold text-center text-white mb-6">Quiz Cybersécurité</h1>
+            <div class="space-y-4">
+                <p id="question" class="text-lg font-medium text-center bg-gray-700 rounded-lg p-4 shadow">
+                    Question ici
+                </p>
+                <div id="options" class="space-y-3">
+                    <!-- Options -->
+                </div>
+            </div>
+            <p id="feedback" class="text-center text-lg mt-4 hidden"></p>
+            <div class="mt-6 flex flex-col space-y-3">
+                <button id="next-btn"
+                    class="hidden bg-indigo-500 py-3 rounded-lg font-semibold hover:bg-indigo-600 transition">
+                    Suivant
+                </button>
+                <button id="restart-btn"
+                    class="hidden bg-green-600 py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+                    Recommencer le quiz
+                </button>
+            </div>
+        </div>
+    </section>
+
+    
+
+
+
+
+
+    <!-- Bouton Retour à la Page d'Accueil -->
+    <div class="mt-12 mb-12 flex justify-center">
+        <a href="index.html" class="bg-blue-500 py-3 px-6 rounded-lg font-semibold text-white hover:bg-blue-600 transition">
+            Retour à la Page d'Accueil
+        </a>
+    </div>
+
+
+        <script>
+            const questions = [
+                {
+                    question: "Que signifie le terme 'phishing' ?",
+                    options: [
+                        "Vol d'identité par e-mail ou faux site",
+                        "Pirater un réseau Wi-Fi",
+                        "Installer un antivirus",
+                        "Créer un mot de passe fort"
+                    ],
+                    answer: 0,
+                },
+                {
+                    question: "Quel est le moyen le plus sûr de protéger vos comptes ?",
+                    options: [
+                        "Utiliser un mot de passe simple",
+                        "Changer de mot de passe tous les mois",
+                        "Activer l'authentification à deux facteurs (2FA)",
+                        "Ne jamais partager vos mots de passe"
+                    ],
+                    answer: 2,
+                },
+                {
+                    question: "Quelle action est risquée sur un réseau Wi-Fi public ?",
+                    options: [
+                        "Vérifier la météo",
+                        "Effectuer des paiements en ligne",
+                        "Rechercher des recettes de cuisine",
+                        "Consulter un blog de cybersécurité"
+                    ],
+                    answer: 1,
+                },
+                {
+                    question: "Qu'est-ce qu'un pare-feu ?",
+                    options: [
+                        "Un logiciel qui bloque les attaques réseau",
+                        "Un antivirus",
+                        "Un programme pour supprimer les spams",
+                        "Un moyen de se connecter à Internet"
+                    ],
+                    answer: 0,
+                },
+                {
+                    question: "Que faire si vous recevez un e-mail suspect ?",
+                    options: [
+                        "Cliquer sur les liens pour vérifier",
+                        "Le signaler comme spam ou phishing",
+                        "Le transmettre à vos amis",
+                        "Répondre pour demander plus d'informations"
+                    ],
+                    answer: 1,
+                },
+                {
+                    question: "Quelle est la meilleure méthode pour créer un mot de passe sécurisé ?",
+                    options: [
+                        "Utiliser votre date de naissance",
+                        "Utiliser un mélange de lettres, chiffres et symboles",
+                        "Réutiliser le même mot de passe pour tous vos comptes",
+                        "Utiliser un mot commun facile à retenir"
+                    ],
+                    answer: 1,
+                },
+                {
+                    question: "Qu'est-ce qu'un ransomware ?",
+                    options: [
+                        "Un logiciel malveillant qui exige une rançon",
+                        "Un antivirus gratuit",
+                        "Un outil de sécurité",
+                        "Un système de sauvegarde"
+                    ],
+                    answer: 0,
+                },
+                {
+                    question: "Pourquoi est-il important de mettre à jour vos logiciels ?",
+                    options: [
+                        "Pour obtenir de nouvelles fonctionnalités",
+                        "Pour corriger des failles de sécurité",
+                        "Pour augmenter la vitesse de l'appareil",
+                        "Pour économiser de la batterie"
+                    ],
+                    answer: 1,
+                },
+                {
+                    question: "Comment reconnaître un site web sécurisé ?",
+                    options: [
+                        "Il contient des publicités",
+                        "Il commence par 'https://' et a un cadenas dans la barre d'adresse",
+                        "Il utilise un design moderne",
+                        "Il charge rapidement"
+                    ],
+                    answer: 1,
+                },
+                {
+                    question: "Que faire si vous pensez que votre mot de passe a été compromis ?",
+                    options: [
+                        "Ne rien faire",
+                        "Changer immédiatement votre mot de passe",
+                        "Désactiver votre compte",
+                        "Utiliser un logiciel antivirus"
+                    ],
+                    answer: 1,
+                }
+            ];
+
+            let currentQuestionIndex = 0;
+            let score = 0;
+
+            const questionElement = document.getElementById("question");
+            const optionsContainer = document.getElementById("options");
+            const feedbackElement = document.getElementById("feedback");
+            const nextButton = document.getElementById("next-btn");
+            const restartButton = document.getElementById("restart-btn");
+
+            function showQuestion() {
+                const currentQuestion = questions[currentQuestionIndex];
+                questionElement.textContent = currentQuestion.question;
+                optionsContainer.innerHTML = "";
+                feedbackElement.classList.add("hidden");
+
+                currentQuestion.options.forEach((option, index) => {
+                    const button = document.createElement("button");
+                    button.textContent = option;
+                    button.className =
+                        "w-full bg-gray-700 py-2 px-4 rounded-lg text-left hover:bg-gray-600 transition";
+                    button.addEventListener("click", () => selectAnswer(index));
+                    optionsContainer.appendChild(button);
+                });
+            }
+
+            function selectAnswer(selectedIndex) {
+                const correctIndex = questions[currentQuestionIndex].answer;
+                const buttons = optionsContainer.querySelectorAll("button");
+
+                buttons.forEach((button, index) => {
+                    button.classList.remove("bg-gray-700", "hover:bg-gray-600");
+                    if (index === correctIndex) {
+                        button.classList.add("bg-green-500");
+                    } else {
+                        button.classList.add("bg-red-500");
+                    }
+                });
+
+                if (selectedIndex === correctIndex) {
+                    score++;
+                    feedbackElement.textContent = "Bonne réponse ! ✅";
+                    feedbackElement.className = "text-center text-lg mt-4 text-green-400";
+                } else {
+                    feedbackElement.textContent = "Mauvaise réponse ❌";
+                    feedbackElement.className = "text-center text-lg mt-4 text-red-400";
+                }
+
+                feedbackElement.classList.remove("hidden");
+                nextButton.classList.remove("hidden");
+            }
+
+            function showNextQuestion() {
+                currentQuestionIndex++;
+
+                if (currentQuestionIndex < questions.length) {
+                    showQuestion();
+                    nextButton.classList.add("hidden");
+                } else {
+                    showScore();
+                }
+            }
+
+            function showScore() {
+                questionElement.textContent = `Votre score : ${score} / ${questions.length}`;
+                optionsContainer.innerHTML = "";
+                feedbackElement.classList.add("hidden");
+                nextButton.classList.add("hidden");
+
+                let comment;
+                if (score === questions.length) {
+                    comment = "Excellent travail, vous êtes un expert en cybersécurité ! 🚀";
+                } else if (score >= questions.length * 0.7) {
+                    comment = "Bon travail ! Vous avez une bonne maîtrise des concepts. 💪";
+                } else if (score >= questions.length * 0.4) {
+                    comment = "Pas mal, mais vous devriez approfondir vos connaissances. 🤔";
+                } else {
+                    comment = "Il est temps de revoir les bases de la cybersécurité ! 📘";
+                }
+
+                feedbackElement.textContent = comment;
+                feedbackElement.className = "text-center text-lg mt-4 text-blue-400";
+                feedbackElement.classList.remove("hidden");
+
+                restartButton.classList.remove("hidden");
+            }
+
+            function restartGame() {
+                currentQuestionIndex = 0;
+                score = 0;
+                restartButton.classList.add("hidden");
+                showQuestion();
+            }
+
+            nextButton.addEventListener("click", showNextQuestion);
+            restartButton.addEventListener("click", restartGame);
+
+            showQuestion();
+
+            // Toggle mobile menu visibility
+
+
+
+        </script>
+
+    <footer class="bg-gray-900 text-white py-6 font-inter">
+        <div class="container mx-auto px-6 md:px-12">
+            <!-- Liens du menu -->
+            <nav class="flex flex-wrap justify-center gap-6 text-gray-300 text-base font-medium">
+                <a href="/pages/index.html" class="hover:text-blue-400 transition">Accueil</a>
+                <a href="/pages/cybersecurite.html" class="hover:text-blue-400 transition">Cybersécurité</a>
+                <a href="/pages/galerie.html" class="hover:text-blue-400 transition">Galerie</a>
+                <a href="/pages/contact.html" class="hover:text-blue-400 transition">Contact</a>
+                <a href="/pages/faq.html" class="hover:text-blue-400 transition">FAQ</a>
+            </nav>
+    
+            <!-- Ligne de séparation -->
+            <div class="border-t border-gray-700 my-5"></div>
+    
+            <!-- Mentions légales et Copyright -->
+            <div class="flex flex-col md:flex-row items-center justify-between text-gray-400 text-sm font-light">
+                <p>&copy; 2025 CyberProtect. Tous droits réservés.</p>
+                <nav class="flex gap-6 mt-2 md:mt-0">
+                    <a href="#" class="hover:text-blue-400 transition">Mentions légales</a>
+                    <a href="#" class="hover:text-blue-400 transition">Politique de confidentialité</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('translate-y-0');
+            mobileMenu.classList.toggle('opacity-100');
+            menuIcon.innerHTML = mobileMenu.classList.contains('hidden')
+                ? `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />`
+                : `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />`;
+        });
+    </script>
+</body>
+
+</html>

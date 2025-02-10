@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersécurité</title>
+    <link href="../dist/output.css" rel="stylesheet">
+    <style>
+        #hamburger-icon path {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform-origin: center;
+        }
+
+        #menu-toggle.active #line1 {
+            transform: translateY(4px) rotate(45deg);
+        }
+
+        #menu-toggle.active #line2 {
+            opacity: 0;
+        }
+
+        #menu-toggle.active #line3 {
+            transform: translateY(-4px) rotate(-45deg);
+        }
+
+        #hamburger-icon svg {
+            transition: transform 0.3s ease;
+        }
+
+        #hamburger-icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-gray-100">
+    <header class="bg-gray-900 text-white shadow-md fixed top-0 inset-x-0 z-50">
+        <div class="container mx-auto flex items-center justify-between p-4">
+            <!-- Logo + Nom -->
+            <a href="../pages/index.html" class="flex items-center space-x-2">
+                <img src="../source/logo.png" alt="CyberProtect Logo" class="w-10 h-10">
+                <span class="text-2xl font-bold tracking-wide">CyberProtect</span>
+            </a>
+
+            <!-- Navigation (Desktop) -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="../pages/index.html" class="hover:text-blue-600 transition">Accueil</a>
+                <a href="#" class="hover:text-blue-600 transition">Cybersécurité</a>
+                <a href="#" class="hover:text-blue-600 transition">Articles</a>
+                <a href="#" class="hover:text-blue-600 transition">Contact</a>
+                <a href="#" class="hover:text-blue-600 transition">FAQ</a>
+            </nav>
+
+            <!-- Bouton Mobile -->
+            <button id="menu-toggle" class="md:hidden focus:outline-none">
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" class="w-10 h-10 text-white transition-transform duration-300">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Navigation Mobile -->
+        <nav id="mobile-menu"
+            class="hidden md:hidden flex-col bg-gray-900 text-white p-6 space-y-4 absolute inset-x-0 top-[4.5rem] shadow-lg rounded-b-lg transition-transform transform -translate-y-10 opacity-0">
+            <a href="../pages/index.html" class="block py-2 px-4 hover:text-blue-600 transition">Accueil</a>
+            <a href="#" class="block py-2 px-4 hover:text-blue-600 transition">Cybersécurité</a>
+            <a href="#" class="block py-2 px-4 hover:text-blue-600 transition">Articles</a>
+            <a href="#" class="block py-2 px-4 hover:text-blue-600 transition">Contact</a>
+            <a href="#" class="block py-2 px-4 hover:text-blue-600 transition">FAQ</a>
+        </nav>
+    </header>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+
+            // Animation du menu déroulant
+            mobileMenu.classList.toggle('translate-y-0');
+            mobileMenu.classList.toggle('opacity-100');
+
+            // Rotation de l'icône menu
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M4 6h16M4 12h16m-7 6h7" />`;
+            } else {
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M6 18L18 6M6 6l12 12" />`;
+            }
+        });
+    </script>
+
+    <div class="bg-gray-100 min-h-screen py-10">
+        <div class="bg-white shadow-md rounded-lg max-w-[95%] mx-auto p-8">
+            <h1 class="text-5xl font-bold text-gray-800 mb-8">Introduction à la Cybersécurité</h1>
+
+            <!-- Section: Introduction -->
+            <section class="mb-10">
+                <p class="text-gray-700 leading-relaxed mb-8 text-lg">
+                    La cybersécurité est l'ensemble des pratiques, technologies et processus visant à protéger les
+                    systèmes
+                    informatiques, les réseaux et les données contre les cyberattaques. Avec la numérisation croissante
+                    de
+                    notre
+                    monde, elle est devenue essentielle pour préserver la confidentialité, l'intégrité et la
+                    disponibilité
+                    des
+                    informations.
+                </p>
+                <video class="w-full rounded-lg shadow-md" controls>
+                    <source src="cybersecurity-intro.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture vidéo.
+                </video>
+                <p class="text-sm text-gray-500 mt-2">Vidéo : Comprendre les bases de la cybersécurité.</p>
+            </section>
+
+            <!-- Section: Les Bases de la Cybersécurité -->
+            <section class="mb-10">
+                <h2 class="text-4xl font-semibold text-gray-800 mb-6">Les Bases de la Cybersécurité</h2>
+                <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                    La cybersécurité repose sur plusieurs principes clés : protéger les données sensibles, empêcher les
+                    accès
+                    non autorisés et réagir efficacement aux incidents. Cela inclut des outils tels que les pare-feu,
+                    les
+                    logiciels antivirus et les protocoles de cryptage.
+                </p>
+                <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-2">Quiz : Connaissez-vous les bases de la cybersécurité ?</h3>
+                    <p class="text-lg mb-4">Combien de caractères un mot de passe doit-il avoir pour être sécurisé ?</p>
+                    <button onclick="showAnswer('correct')"
+                        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Au moins 12</button>
+                    <button onclick="showAnswer('incorrect')"
+                        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-4">6 ou moins</button>
+                    <p id="quiz-answer" class="text-gray-700 mt-4"></p>
+                </div>
+            </section>
+
+            <script>
+                function showAnswer(answer) {
+                    const response = answer === 'correct'
+                        ? "Bonne réponse ! Un mot de passe sécurisé doit comporter au moins 12 caractères."
+                        : "Mauvaise réponse. Les mots de passe courts sont plus faciles à deviner.";
+                    document.getElementById('quiz-answer').innerText = response;
+                }
+            </script>
+
+            ction class="mb-10">
+            <h2 class="text-4xl font-semibold text-gray-800 mb-6">L'Importance des Mots de Passe</h2>
+            <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                Un mot de passe fort est une première ligne de défense contre les cyberattaques. Il doit être long,
+                complexe et unique pour chaque compte.
+            </p>
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Testez votre mot de passe :</h3>
+            <input type="password" id="password-test" placeholder="Entrez un mot de passe"
+                class="border border-gray-300 rounded p-2 w-full mb-4">
+            <button onclick="testPassword()"
+                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Vérifier</button>
+            <div class="mt-4">
+                <div id="password-strength-bar" class="w-full h-4 bg-gray-300 rounded mb-2">
+                    <div id="password-strength-fill" class="h-4 bg-red-500 rounded" style="width: 0%;"></div>
+                </div>
+                <p id="password-result" class="text-gray-700"></p>
+                <p id="password-crack-time" class="text-sm text-gray-500"></p>
+            </div>
+            </section>
+
+            <script>
+                function testPassword() {
+                    const password = document.getElementById('password-test').value;
+                    const strengthBar = document.getElementById('password-strength-fill');
+                    const strengthText = document.getElementById('password-result');
+                    const crackTimeText = document.getElementById('password-crack-time');
+
+                    let strength = "très faible";
+                    let barColor = "bg-red-500";
+                    let crackTime = "quelques secondes";
+                    let barWidth = "25%";
+
+                    if (password.length >= 12 && /[A-Z]/.test(password) && /[0-9]/.test(password) && /[!@#$%^&*]/.test(password)) {
+                        strength = "très fort";
+                        barColor = "bg-green-500";
+                        crackTime = "plusieurs milliards d'années";
+                        barWidth = "100%";
+                    } else if (password.length >= 8) {
+                        strength = "moyen";
+                        barColor = "bg-yellow-500";
+                        crackTime = "quelques heures";
+                        barWidth = "50%";
+                    }
+
+                    strengthBar.className = `h-4 rounded ${barColor}`;
+                    strengthBar.style.width = barWidth;
+                    strengthText.innerHTML = `Votre mot de passe est : <span class="${barColor}">${strength}</span>`;
+                    crackTimeText.textContent = `Temps estimé pour le craquer : ${crackTime}`;
+                }
+            </script>
+
+
+            <!-- Section: Les Logiciels Malveillants -->
+            <section class="mb-10">
+                <h2 class="text-4xl font-semibold text-gray-800 mb-6">Les Logiciels Malveillants</h2>
+                <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                    Les logiciels malveillants (malwares) sont des programmes conçus pour infiltrer et endommager des
+                    systèmes
+                    informatiques. Ils incluent les virus, les ransomwares et les spyware.
+                </p>
+                <img src="malware-example.jpg" alt="Exemple de logiciel malveillant"
+                    class="w-full rounded-lg shadow-md">
+                <p class="text-sm text-gray-500 mt-2">Affiche : Types courants de logiciels malveillants.</p>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mt-6 mb-4">Quiz sur les Malwares :</h3>
+                <p class="text-lg mb-4">Quel type de malware chiffre vos fichiers et demande une rançon ?</p>
+                <button onclick="showMalwareAnswer('correct')"
+                    class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Ransomware</button>
+                <button onclick="showMalwareAnswer('incorrect')"
+                    class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-4">Virus</button>
+                <p id="malware-answer" class="text-gray-700 mt-4"></p>
+            </section>
+
+            <script>
+                function showMalwareAnswer(answer) {
+                    const response = answer === 'correct'
+                        ? "Bonne réponse ! Un ransomware chiffre vos fichiers et demande une rançon."
+                        : "Mauvaise réponse. Un virus peut infecter des fichiers, mais ne demande pas nécessairement une rançon.";
+                    document.getElementById('malware-answer').innerText = response;
+                }
+            </script>
+
+            <!-- Section: L'Authentification à Deux Facteurs -->
+            <section class="mb-10">
+                <h2 class="text-4xl font-semibold text-gray-800 mb-6">L'Authentification à Deux Facteurs (2FA)</h2>
+                <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                    La 2FA est une méthode qui ajoute une couche supplémentaire de sécurité en demandant une
+                    vérification
+                    supplémentaire, comme un code envoyé à votre téléphone.
+                </p>
+                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-2">Astuce :</h3>
+                    <p class="text-lg">
+                        Activez la 2FA sur tous vos comptes importants pour réduire les risques d'accès non autorisé.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section: Les Attaques par Ingénierie Sociale -->
+            <section>
+                <h2 class="text-4xl font-semibold text-gray-800 mb-6">Les Attaques par Ingénierie Sociale</h2>
+                <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                    L'ingénierie sociale exploite la manipulation psychologique pour inciter les victimes à divulguer
+                    des
+                    informations sensibles. Par exemple, un appel frauduleux prétendant venir d'un employé de support
+                    technique.
+                </p>
+                <video class="w-full rounded-lg shadow-md" controls>
+                    <source src="social-engineering.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture vidéo.
+                </video>
+                <p class="text-sm text-gray-500 mt-2">Vidéo : Comment éviter les attaques d'ingénierie sociale.</p>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mt-6 mb-4">Test d'Ingénierie Sociale :</h3>
+                <p class="text-lg mb-4">Quel est un signe d'un email d'ingénierie sociale ?</p>
+                <button onclick="showSocialEngineeringAnswer('correct')"
+                    class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Demande d'informations
+                    sensibles</button>
+                <button onclick="showSocialEngineeringAnswer('incorrect')"
+                    class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-4">Offre d'un prix</button>
+                <p id="social-engineering-answer" class="text-gray-700 mt-4"></p>
+            </section>
+
+            <script>
+                function showSocialEngineeringAnswer(answer) {
+                    const response = answer === 'correct'
+                        ? "Bonne réponse ! Les emails demandant des informations sensibles sont souvent frauduleux."
+                        : "Mauvaise réponse. Une offre peut être suspecte, mais ce n'est pas toujours un signe d'attaque.";
+                    document.getElementById('social-engineering-answer').innerText =
+                        response;
+                }
+            </script>
+
+
+
+
+
+            <footer class="bg-gray-900 text-white mt-10 py-6">
+                <div class="container mx-auto text-center space-y-4">
+                    <p class="text-lg font-semibold">CyberProtect &copy; 2025 - Tous droits réservés</p>
+                    <nav class="flex justify-center space-x-6">
+                        <a href="#" class="hover:text-blue-600 transition">Mentions légales</a>
+                        <a href="#" class="hover:text-blue-600 transition">Politique de confidentialité</a>
+                        <a href="#" class="hover:text-blue-600 transition">Contact</a>
+                    </nav>
+                </div>
+            </footer>
+
+</body>
+
+</html>
